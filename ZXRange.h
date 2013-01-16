@@ -34,10 +34,12 @@
 @property (nonatomic, readonly) NSInteger min;
 @property (nonatomic, readonly) NSInteger max;
 
-+ (id)rangeWithMin:(NSInteger)min max:(NSInteger)max;
++ (id)rangeFromMin:(NSInteger)min toMax:(NSInteger)max;
 + (id)rangeWithMax:(NSInteger)max;
 
-- (id)initRangeWithMin:(NSInteger)min max:(NSInteger)max;
+- (id)initRangeFromMin:(NSInteger)min toMax:(NSInteger)max;
 - (id)initRangeWithMax:(NSInteger)max;
+
+- (void)setNewRangeFromMin:(NSInteger)min toMax:(NSInteger)max;
 
 @end
