@@ -31,18 +31,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class ZXRange;
+
+
 @interface ZXRandom : NSObject
 
-@property (nonatomic, readonly) NSInteger minValue;
-@property (nonatomic, readonly) NSInteger maxValue;
+@property (nonatomic, strong) ZXRange *range;
 
-+ (id)generatorFromMin:(NSInteger)value1 toMax:(NSInteger)value2;
-- (id)initGeneratorFromMin:(NSInteger)value1 toMax:(NSInteger)value2;
-- (id)init;
++ (id)randomGeneratorWithRange:(ZXRange *)range;
+- (id)initRandomGeneratorWithRange:(ZXRange *)range;
 
-- (BOOL)isValidRange;
-
-+ (NSInteger)randomValueFromMin:(NSInteger)value1 toMax:(NSInteger)value2;
++ (NSInteger)randomValueWithRange:(ZXRange *)range;
 - (NSInteger)randomValue;
 
 @end

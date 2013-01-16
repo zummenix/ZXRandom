@@ -28,72 +28,51 @@
  */
 
 #import "ZXRandom.h"
+#import "ZXRange.h"
 
 @implementation ZXRandom
 
-@synthesize minValue = min;
-@synthesize maxValue = max;
+@synthesize range = _range;
 
 
-#pragma mark - Creating and Initializing random number generator
+#pragma mark - Creating and Initializing random generator
 
-+ (id)generatorFromMin:(NSInteger)value1 toMax:(NSInteger)value2
++ (id)randomGeneratorWithRange:(ZXRange *)range
 {
-    return [[self alloc] initGeneratorFromMin:value1 toMax:value2];
+    return [[self alloc] initRandomGeneratorWithRange:range];
 }
 
-- (id)initGeneratorFromMin:(NSInteger)value1 toMax:(NSInteger)value2
+- (id)initRandomGeneratorWithRange:(ZXRange *)range
 {
     self = [super init];
 
     if (self != nil) {
-        if (value1 < value2) {
-            min = value1; max = value2;
-        } else {
-            min = value2; max = value1;
-        }
+        _range = range;
     }
 
     return self;
 }
 
-- (id)init
-{
-    return [self initGeneratorFromMin:0 toMax:255];
-}
-
-
-#pragma mark - Checking valid range
-
-- (BOOL)isValidRange
-{
-    return (max > min);
-}
-
 
 #pragma mark - Getting Integer random value
 
-+ (NSInteger)randomValueFromMin:(NSInteger)value1 toMax:(NSInteger)value2
++ (NSInteger)randomValueWithRange:(ZXRange *)range
 {
-    ZXRandom *generator = [[self alloc] initGeneratorFromMin:value1 toMax:value2];
-    return [generator randomValue];
+    ZXRandom *randomGenerator = [[ZXRandom alloc] initRandomGeneratorWithRange:range];
+    return [randomGenerator randomValue];
 }
 
 - (NSInteger)randomValue
 {
-    if ([self isValidRange] == NO) {
-        [NSException raise:@"InvalidRange" format:@"Invalid range in %@", self];
-    }
-    
-    return min + arc4random() % (max - min + 1);
+    return [_range min] + arc4random() % ([_range max] - [_range min] + 1);
 }
 
 
-#pragma mark - Description for random number generator
+#pragma mark - Description for random generator
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<ZXRandom generator: minValue = %li; maxValue = %li>", min, max];
+    return [NSString stringWithFormat:@"<ZXRandom generator: minValue = %li; maxValue = %li>", [_range min], [_range max]];
 }
 
 @end
