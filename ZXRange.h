@@ -40,6 +40,4 @@
 - (id)initRangeFromMin:(NSInteger)min toMax:(NSInteger)max;
 - (id)initRangeWithMax:(NSInteger)max;
 
-- (void)setNewRangeFromMin:(NSInteger)min toMax:(NSInteger)max;
-
 @end

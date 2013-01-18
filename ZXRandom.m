@@ -30,6 +30,7 @@
 #import "ZXRandom.h"
 #import "ZXRange.h"
 
+
 @implementation ZXRandom
 
 @synthesize range = _range;
@@ -47,7 +48,7 @@
     self = [super init];
 
     if (self != nil) {
-        _range = range;
+        [self setRange:range];
     }
 
     return self;
@@ -72,7 +73,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<ZXRandom generator: minValue = %li; maxValue = %li>", [_range min], [_range max]];
+    return [NSString stringWithFormat:@"<ZXRandom: %@>", _range];
 }
 
 @end

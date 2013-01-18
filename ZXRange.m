@@ -35,6 +35,8 @@
 @synthesize max = _max;
 
 
+#pragma mark - Creating and Initializing range
+
 + (id)rangeFromMin:(NSInteger)min toMax:(NSInteger)max
 {
     return [[self alloc] initRangeFromMin:min toMax:max];
@@ -50,7 +52,12 @@
     self = [super init];
 
     if (self != nil) {
-        [self setNewRangeFromMin:min toMax:max];
+        _min = min;
+        _max = max;
+
+        if (_min >= _max) {
+            [NSException raise:@"InvalidRange" format:@"Invalid range in %@", self];
+        }
     }
 
     return self;
@@ -61,15 +68,8 @@
     return [self initRangeFromMin:0 toMax:max];
 }
 
-- (void)setNewRangeFromMin:(NSInteger)min toMax:(NSInteger)max
-{
-    _min = min;
-    _max = max;
 
-    if (_min >= _max) {
-        [NSException raise:@"InvalidRange" format:@"Invalid range in %@", self];
-    }
-}
+#pragma mark - Description for range
 
 - (NSString *)description
 {
