@@ -28,52 +28,35 @@
  */
 
 #import "ZXRandom.h"
-#import "ZXRange.h"
 
 
-@implementation ZXRandom
-
-@synthesize range = _range;
-
-
-#pragma mark - Creating and Initializing random generator
-
-+ (id)randomGeneratorWithRange:(ZXRange *)range
+CGFloat ZXRandomFloat(CGFloat minValue, CGFloat maxValue)
 {
-    return [[self alloc] initRandomGeneratorWithRange:range];
-}
+    CGFloat min = minValue;
+    CGFloat max = maxValue;
 
-- (id)initRandomGeneratorWithRange:(ZXRange *)range
-{
-    self = [super init];
-
-    if (self != nil) {
-        [self setRange:range];
+    if (minValue > maxValue) {
+        min = maxValue;
+        max = minValue;
     }
 
-    return self;
+    return min + (arc4random() / (CGFloat)ARC4RANDOM_MAX) * (max - min);
 }
 
-
-#pragma mark - Getting Integer random value
-
-+ (NSInteger)randomValueWithRange:(ZXRange *)range
+NSInteger ZXRandomInteger(NSInteger minValue, NSInteger maxValue)
 {
-    ZXRandom *randomGenerator = [[ZXRandom alloc] initRandomGeneratorWithRange:range];
-    return [randomGenerator randomValue];
+    NSInteger min = minValue;
+    NSInteger max = maxValue;
+
+    if (minValue > maxValue) {
+        min = maxValue;
+        max = minValue;
+    }
+
+    return min + arc4random() % (max - min + 1);
 }
 
-- (NSInteger)randomValue
+BOOL ZXRanndomBoolean()
 {
-    return [_range min] + arc4random() % ([_range max] - [_range min] + 1);
+    return (arc4random() % 2) == 1;
 }
-
-
-#pragma mark - Description for random generator
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"<ZXRandom: %@>", _range];
-}
-
-@end

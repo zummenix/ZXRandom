@@ -31,17 +31,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class ZXRange;
 
+#define ARC4RANDOM_MAX (0xFFFFFFFF - 1)
 
-@interface ZXRandom : NSObject
-
-@property (nonatomic, strong) ZXRange *range;
-
-+ (id)randomGeneratorWithRange:(ZXRange *)range;
-- (id)initRandomGeneratorWithRange:(ZXRange *)range;
-
-+ (NSInteger)randomValueWithRange:(ZXRange *)range;
-- (NSInteger)randomValue;
-
-@end
+CGFloat ZXRandomFloat(CGFloat minValue, CGFloat maxValue);
+NSInteger ZXRandomInteger(NSInteger minValue, NSInteger maxValue);
+BOOL ZXRanndomBoolean();
