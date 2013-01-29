@@ -30,6 +30,14 @@
 #import "ZXRandom.h"
 
 
+#define ARC4RANDOM_MAX (0xFFFFFFFF - 1)
+
+
+BOOL ZXRanndomBoolean()
+{
+    return (arc4random() % 2) == 1;
+}
+
 CGFloat ZXRandomFloat(CGFloat minValue, CGFloat maxValue)
 {
     CGFloat min = minValue;
@@ -54,9 +62,4 @@ NSInteger ZXRandomInteger(NSInteger minValue, NSInteger maxValue)
     }
 
     return min + arc4random() % (max - min + 1);
-}
-
-BOOL ZXRanndomBoolean()
-{
-    return (arc4random() % 2) == 1;
 }

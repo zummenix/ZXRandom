@@ -27,13 +27,9 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// Simple class for integer random numbers.
-
 #import <Foundation/Foundation.h>
 
 
-#define ARC4RANDOM_MAX (0xFFFFFFFF - 1)
-
+BOOL ZXRanndomBoolean();
 CGFloat ZXRandomFloat(CGFloat minValue, CGFloat maxValue);
 NSInteger ZXRandomInteger(NSInteger minValue, NSInteger maxValue);
-BOOL ZXRanndomBoolean();
