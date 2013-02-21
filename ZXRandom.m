@@ -35,7 +35,7 @@
 
 BOOL ZXRanndomBoolean()
 {
-    return (arc4random() % 2) == 1;
+    return (arc4random() & 1) ? YES : NO;
 }
 
 CGFloat ZXRandomFloat(CGFloat minValue, CGFloat maxValue)
