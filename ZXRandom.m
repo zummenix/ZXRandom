@@ -62,15 +62,16 @@ NSInteger ZXRandomInteger(NSInteger minValue, NSInteger maxValue)
     }
 
 #if __LP64__ || (TARGET_OS_EMBEDDED && !TARGET_OS_IPHONE) || TARGET_OS_WIN32 || NS_BUILD_32_LIKE_64
-    NSUInteger randomValue = (NSUInteger)(arc4random() + 1) << 32;
-    randomValue |= (NSUInteger)(arc4random() + 1);
+    NSUInteger randomValue = ((NSUInteger)(arc4random() + 1) << 32) | ((NSUInteger)(arc4random() + 1));
 #else
     NSUInteger randomValue = (NSUInteger)(arc4random() + 1);
 #endif
 
-    // Getting range and checking overflow
+    // Calculating range and checking overflow
     NSUInteger range = (max - min + 1);
-    if (range == 0) range = NSUIntegerMax;
+    if (range == 0) {
+        range = NSUIntegerMax;
+    }
 
     return min + randomValue % range;
 }
