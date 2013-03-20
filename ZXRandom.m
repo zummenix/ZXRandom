@@ -33,7 +33,7 @@
 #define ARC4RANDOM_MAX (0xFFFFFFFF - 1)
 
 
-BOOL ZXRanndomBoolean()
+BOOL ZXRandomBoolean()
 {
     return (arc4random() & 1) == 1 ? YES : NO;
 }

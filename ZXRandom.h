@@ -30,6 +30,6 @@
 #import <Foundation/Foundation.h>
 
 
-BOOL ZXRanndomBoolean();
+BOOL ZXRandomBoolean();
 CGFloat ZXRandomFloat(CGFloat minValue, CGFloat maxValue);
 NSInteger ZXRandomInteger(NSInteger minValue, NSInteger maxValue);
