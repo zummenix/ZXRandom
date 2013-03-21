@@ -1,4 +1,4 @@
-ZXRandom is just easy wrapper over arc4random() function that returns pseudo-random numbers.
+ZXRandom is just a wrapper over arc4random() function that returns pseudo-random numbers.
 
 ## Example Usage
 
@@ -29,6 +29,3 @@ for (NSUInteger i = 0; i < 100; i++) {
     [randomNumbers addObject:[NSNumber numberWithInteger:ZXRandomInteger(-10, 10)]];
 }
 ```
-
-
-
