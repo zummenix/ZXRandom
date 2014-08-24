@@ -2,6 +2,8 @@ ZXRandom is just a wrapper over arc4random() function that returns pseudo-random
 
 ## Example Usage
 
+Copy `ZXRandom.h` and `ZXRandom.m` into your project.
+
 ### ZXRandomBoolean
 
 ``` objective-c
